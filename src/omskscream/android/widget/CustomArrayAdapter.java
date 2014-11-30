@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package omskscream.android.custom;
+package omskscream.android.widget;
 
 import android.content.Context;
 import android.util.Log;
@@ -40,7 +40,7 @@ import java.util.List;
  * {@code
  *      CustomArrayAdapter<Teacher> teachersAdapter =
  *      new CustomArrayAdapter<Teacher>(this, android.R.layout.simple_dropdown_item_1line,
- *      DBFacade.getInstance(getApplicationContext()).getAllTeachers()) {
+ *      DBFacade.getAllTeachers()) {
  *          {@literal @}Override
  *          protected boolean isFilterCondition(final Teacher data, String constraint) {
  *              String lastName = data.getLastName().toLowerCase();
