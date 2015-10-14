@@ -45,13 +45,8 @@ import java.util.List;
  *     {
  *          {@literal @}Override
  *          protected boolean isFilterCondition(final Teacher data, String constraint) {
- *              String lastName = data.getLastName().toLowerCase();
- *              String firstName = data.getFirstName().toLowerCase();
- *              String val = constraint.toLowerCase();
- *              if (lastName.contains(val) || firstName.contains(val) ) {
- *                  return true;
- *              }
- *              return false;
+ *              return data.getLastName().contains(constraint)
+ *                      || data.getFirstName().contains(constraint);
  *          }
  *     };
  * }
