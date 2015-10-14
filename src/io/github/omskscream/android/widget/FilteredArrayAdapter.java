@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package omskscream.android.widget;
+package io.github.omskscream.android.widget;
 
 import android.content.Context;
 import android.util.Log;
@@ -38,15 +38,17 @@ import java.util.List;
  * Typical implementation might look like as shown:
  * <pre>
  * {@code
- *      CustomArrayAdapter<Teacher> teachersAdapter =
- *      new CustomArrayAdapter<Teacher>(this, android.R.layout.simple_dropdown_item_1line,
- *      DBFacade.getAllTeachers()) {
+ *      FilteredArrayAdapter<Teacher> teachersAdapter =
+ *      new FilteredArrayAdapter<Teacher>(this,
+ *                                      android.R.layout.simple_dropdown_item_1line,
+ *                                      getAllTeachers())
+ *     {
  *          {@literal @}Override
  *          protected boolean isFilterCondition(final Teacher data, String constraint) {
  *              String lastName = data.getLastName().toLowerCase();
  *              String firstName = data.getFirstName().toLowerCase();
  *              String val = constraint.toLowerCase();
- *              if (nameL.contains(val) || nameF.contains(val) ) {
+ *              if (lastName.contains(val) || firstName.contains(val) ) {
  *                  return true;
  *              }
  *              return false;
@@ -56,7 +58,7 @@ import java.util.List;
  * </pre>
  * Based on {@link android.widget.ArrayAdapter}
  */
-public abstract class CustomArrayAdapter<T> extends BaseAdapter implements Filterable {
+public abstract class FilteredArrayAdapter<T> extends BaseAdapter implements Filterable {
     /**
      * Contains the list of objects that represent the data of this ArrayAdapter.
      * The content of this list is referred to as "the array" in the documentation.
@@ -84,7 +86,7 @@ public abstract class CustomArrayAdapter<T> extends BaseAdapter implements Filte
     protected int mDropDownResource;
 
     /**
-     * If the inflated resource is not a TextView, {@link #mFieldId} is used to find
+     * If the inflated resource is not a TextView, mFieldId is used to find
      * a TextView inside the inflated views hierarchy. This field must contain the
      * identifier that matches the one defined in the resource file.
      */
@@ -106,27 +108,27 @@ public abstract class CustomArrayAdapter<T> extends BaseAdapter implements Filte
     protected LayoutInflater mInflater;
 
 
-    public CustomArrayAdapter(Context context, int resource) {
+    public FilteredArrayAdapter(Context context, int resource) {
         init(context, resource, 0, new ArrayList<T>());
     }
 
-    public CustomArrayAdapter(Context context, int resource, int textViewResourceId) {
+    public FilteredArrayAdapter(Context context, int resource, int textViewResourceId) {
         init(context, resource, textViewResourceId, new ArrayList<T>());
     }
 
-    public CustomArrayAdapter(Context context, int resource, T[] objects) {
+    public FilteredArrayAdapter(Context context, int resource, T[] objects) {
         init(context, resource, 0, Arrays.asList(objects));
     }
 
-    public CustomArrayAdapter(Context context, int resource, int textViewResourceId, T[] objects) {
+    public FilteredArrayAdapter(Context context, int resource, int textViewResourceId, T[] objects) {
         init(context, resource, textViewResourceId, Arrays.asList(objects));
     }
 
-    public CustomArrayAdapter(Context context, int resource, List<T> objects) {
+    public FilteredArrayAdapter(Context context, int resource, List<T> objects) {
         init(context, resource, 0, objects);
     }
 
-    public CustomArrayAdapter(Context context, int resource, int textViewResourceId, List<T> objects) {
+    public FilteredArrayAdapter(Context context, int resource, int textViewResourceId, List<T> objects) {
         init(context, resource, textViewResourceId, objects);
     }
 
