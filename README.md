@@ -4,8 +4,8 @@ Filtered Array Adapter
 [*FilteredArrayAdapter*](/src/io/github/omskscream/android/widget/FilteredArrayAdapter.java "FilteredArrayAdapter.java") - ArrayAdapter with possibility of custom filtering of displaying items
 
 ```java
-CustomArrayAdapter<Teacher> teachersAdapter = 
-        new CustomArrayAdapter<Teacher>(this, 
+FilteredArrayAdapter<Teacher> teachersAdapter = 
+        new FilteredArrayAdapter<Teacher>(this, 
                                         android.R.layout.simple_dropdown_item_1line,
                                         getAllTeachers()) 
     {
